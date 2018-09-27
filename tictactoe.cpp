@@ -2,7 +2,6 @@
 
 using namespace std;
 
-
 int main()
 {
   char board [3][3];
@@ -10,28 +9,29 @@ int main()
   bool playerx = false;
   bool playing = true;
   int moves = 0;
-
-  while (playing == true && moves <= 9) {
-   if (playero == true) {
-    cout << "Player O, make a move" << endl;
-    moves++;
-    cout << moves << endl;
-   playero = false;
-   playerx = true;
+  bool won = false;
+  int row = 0;
+  int col = 0;
+ 
+  for (row = 0; row < 3; row++) {
+    for (col = 0; col < 3; col++) {
+      cout << board[3][3] << "*";       
+    }
+    cout << endl;
   }
-  
-  if (playerx == true) {
+  while (playing == true && moves <= 9) {
+    if (moves == 0 || moves == 2 || moves == 4 || moves == 6 || moves == 8) {
     cout << "Player X, make a move" << endl;
     moves++;
-    cout << moves << endl;
-    playero = true;
-    playerx = false;
   }
   
-  if (moves == 10) {
+  if (moves == 1 || moves == 3 || moves == 5 || moves == 7) {
+    cout << "Player O, make a move" << endl;
+    moves++;
+  }
+  
+  if (moves == 9) {
     playing = false;
-    playero = false;
-    playerx = false;
     cout << "tie" << endl;
   }
   } 
