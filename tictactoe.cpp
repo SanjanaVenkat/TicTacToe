@@ -9,7 +9,8 @@ int main()
   bool playerx = false;
   bool playing = true;
   int moves = 0;
-  bool won = false;
+  bool xwon = false;
+  bool owon = false;  
   int row = 0;
   int col = 0;
     
@@ -19,14 +20,50 @@ int main()
     }
     cout << endl;
   }
-  
-  while (playing == true && moves <= 9) {
+  while (xwon == false && owon == false && moves <= 9) {
+    if (board[0][0] == 'X' && board[0][1] == 'X' && board[0][2] == 'X') {
+      xwon == true;
+      moves == 10;
+      cout << "test" << endl;
+    }
+    if (board[1][0] == 'X' && board[1][1] == 'X' && board[1][2] == 'X') {
+      xwon == true;
+    }
+    if (board[2][0] == 'X' && board[2][1] == 'X' && board[2][2] == 'X') {
+      xwon == true;
+    }
+    if (board[0][0] == 'X' && board[1][0] == 'X' && board[2][0] == 'X') {
+      xwon == true;
+    }
+    if (board[0][1] == 'X' && board[1][1] == 'X' && board[2][1] == 'X') {
+      xwon == true;
+    }
+    if (board[0][2] == 'X' && board[1][2] == 'X' && board[2][2] == 'X') {
+       xwon == true;
+    }
+    if (board[0][0] == 'X' && board[1][1] == 'X' && board[2][2] == 'X') {
+      xwon == true;
+    }
+    if (board[0][2] == 'X' && board[1][1] == 'X' && board[2][0] == 'X')  {
+      xwon == true;
+    }
+    else {
+      xwon == false;
+    }
+    //}
+  //while (xwon == false && owon == false && moves <= 9) { 
     if (moves == 0 || moves == 2 || moves == 4 || moves == 6 || moves == 8) {
     cout << "Player X, enter a row number, 1-3" << endl;
     cin >> row;
     cout << "Enter a column number, 1-3" << endl;
     cin >> col;
+    if (board[row-1][col-1] != 'X' && board[row-1][col-1] != 'O') {
     board[row-1][col-1] = 'X';
+    }
+    else {
+      cout << "Move is not allowed, make a new move" << endl;
+      moves--;
+    }
     cout << "Row:";
     cout << row << endl;
     cout << "Col:";
@@ -45,7 +82,13 @@ int main()
     cin >> row;
     cout << "Enter a column number, 1-3" << endl;
     cin >> col;
+    if (board[row-1][col-1] != 'X' && board[row-1][col-1] != 'O') {
     board[row-1][col-1] = 'O';
+    }
+    else {
+      cout << "Move is not allowed, make a new move" << endl;
+      moves--;
+    }
     cout << "Row:";
     cout << row << endl;
     cout << "Col:";
@@ -60,12 +103,16 @@ int main()
   }
   
   if (moves == 9) {
- 
     playing = false;
     cout << "tie" << endl;
+    return 0;
     }
-  } 
- 
+  }
+
+
+  if (xwon == true) {
+    cout << "x won" << endl;
+  }
 
   return 0;
 }
