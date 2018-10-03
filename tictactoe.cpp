@@ -75,21 +75,13 @@ int main()
       playing != 0;
       playing == 1;
       cout << "Game won by x"<< endl;
-      cout << "want to play again?" << endl;
-      cin >> response;
-      if (response == 'y') {
-	playing == 0;
-	moves == 0;
 	for (row = 0; row < 3; row++) {
 	  for (col = 0; col < 3; col++) {
 	    cout << board[3][3] << '*';
 	  }
 	  cout << endl;
 	}
-      }
-      if (response == 'n') {
-	cout << "no" << endl;
-      }
+	moves == -1;
     }
     moves++;
   }
