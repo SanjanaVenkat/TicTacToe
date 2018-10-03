@@ -9,6 +9,7 @@ int main()
   bool playerx = false;
   bool playing = true;
   int moves = 0;
+  int response = 0;
   bool xwon = false;
   bool owon = false;  
   int row = 0;
@@ -20,10 +21,13 @@ int main()
     }
     cout << endl;
   }
-  while (xwon == false && owon == false && moves <= 9) {
+  while (playing = true) {
+    //if (playing = false) {
+      //cout << "not playing, false" << endl;
+      //}
     if (board[0][0] == 'X' && board[0][1] == 'X' && board[0][2] == 'X') {
       xwon == true;
-      moves == 10;
+      playing == false;
       cout << "test" << endl;
     }
     if (board[1][0] == 'X' && board[1][1] == 'X' && board[1][2] == 'X') {
@@ -47,12 +51,10 @@ int main()
     if (board[0][2] == 'X' && board[1][1] == 'X' && board[2][0] == 'X')  {
       xwon == true;
     }
-    else {
-      xwon == false;
-    }
+ 
     //}
   //while (xwon == false && owon == false && moves <= 9) { 
-    if (moves == 0 || moves == 2 || moves == 4 || moves == 6 || moves == 8) {
+    if (playing == true && moves == 0 || moves == 2 || moves == 4 || moves == 6 || moves == 8) {
     cout << "Player X, enter a row number, 1-3" << endl;
     cin >> row;
     cout << "Enter a column number, 1-3" << endl;
@@ -77,7 +79,7 @@ int main()
       moves++;
   }
   
-  if (moves == 1 || moves == 3 || moves == 5 || moves == 7) {
+   if (playing == true && moves == 1 || moves == 3 || moves == 5 || moves == 7) {
     cout << "Player O, enter a row number, 1-3" << endl;
     cin >> row;
     cout << "Enter a column number, 1-3" << endl;
@@ -102,16 +104,30 @@ int main()
     moves++;
   }
   
-  if (moves == 9) {
+  if (playing = true && moves == 9) {
     playing = false;
     cout << "tie" << endl;
     return 0;
     }
-  }
+
+   
 
 
   if (xwon == true) {
     cout << "x won" << endl;
+  }
+  if (playing == false) {
+    cout << "Not playing" << endl;
+    cout << "Play again?" << endl;
+    cin >> response;
+    if (response == 'n') {
+      return 0;
+    }
+    else if (response == 'y') {
+      playing == true;
+      moves == 0;
+    }
+  }
   }
 
   return 0;
